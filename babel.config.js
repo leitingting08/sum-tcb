@@ -1,23 +1,24 @@
 module.exports = {
-    presets: [
-        [
-            '@babel/preset-env',
-            {
-                useBuiltIns: 'usage',
-                corejs: 3
-            }
-        ],
-        '@babel/preset-react'
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        useBuiltIns: 'usage',
+        corejs: 3
+      }
     ],
-    plugins: [
-        '@babel/plugin-transform-runtime',
-        [
-            'import',
-            {
-                libraryName: 'antd',
-                style: true
-            },
-            'antd'
-        ]
+    '@babel/preset-react'
+  ],
+  plugins: [
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    '@babel/plugin-transform-runtime',
+    [
+      'import',
+      {
+        libraryName: 'antd',
+        style: true
+      },
+      'antd'
     ]
+  ]
 }

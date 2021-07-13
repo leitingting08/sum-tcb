@@ -6,8 +6,15 @@ import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
 import routes from '@/routes'
 import App from '@/pages/App'
 import NotFound from '@/pages/notFound'
+import Login from '@/pages/login'
 import { StoreProvider } from '@/store'
 import reportWebVitals from '@/reportWebVitals'
+import '@/styles/base.less'
+import { FcBubbles, Fc3DBtn, FcTypingInput } from 'fancy-components'
+import 'css-doodle'
+new FcBubbles()
+new Fc3DBtn('fc-btn')
+new FcTypingInput('fc-input')
 
 const createRoute = (routesArr = []) => {
   return routesArr.reduce((pre, cur) => {
@@ -40,6 +47,7 @@ const RouteApp = () => {
       <HashRouter>
         <Switch>
           {createRoute(routes).map((route, index) => createBasicRoute(route, index))}
+          <Route path="/login" component={Login} />
           <Route path="/notFound" component={NotFound} />
           <Redirect to="/notFound" />
         </Switch>
@@ -48,11 +56,8 @@ const RouteApp = () => {
   )
 }
 
-
 const render = (Component) => {
-  ReactDOM.render(<Component />,
-    document.querySelector('#app')
-  )
+  ReactDOM.render(<Component />, document.querySelector('#app'))
 }
 
 render(RouteApp)
